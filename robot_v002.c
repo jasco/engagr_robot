@@ -98,14 +98,27 @@ void processSerialModeCommand(char input) {
 }
 
 void drive(int leftVelocity, int rightVelocity) {
-    analogWrite(MOTOR_LEFT, leftVelocity);
-    analogWrite(MOTOR_RIGHT, rightVelocity);
+    // There is a errata issued where PWM output may have higher than expected duty-cycle at levels 0-10.
+    // Particularly noteworthy, analog 0 may not fully turn off.
+    // Reference http://arduino.cc/en/Reference/analogWrite
+
+    if (leftVelocity != 0) {
+        analogWrite(MOTOR_LEFT, leftVelocity);
+    } else {
+        digitalWrite(MOTOR_LEFT, 0);  // digital to ensure off
+    }
+
+    if (rightVelocity != 0) {
+        analogWrite(MOTOR_RIGHT, rightVelocity);
+    } else {
+        digitalWrite(MOTOR_RIGHT, 0);  // digital to ensure off
+    }
+
     delay(20);
 }
 
 void stop() {
-    analogWrite(MOTOR_LEFT, 0);
-    analogWrite(MOTOR_RIGHT, 0);
+    drive(0, 0);
     delay(100);
 }
 
