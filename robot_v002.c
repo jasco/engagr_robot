@@ -1,7 +1,7 @@
 // TinsyDuino
 
-#define sensor1 A0
-#define sensor2 A1
+#define ANALOG_SENSOR1 A0
+#define ANALOG_SENSOR2 A1
 #define MOTOR_LEFT  4
 #define MOTOR_RIGHT 5
 
@@ -110,8 +110,8 @@ void stop() {
 }
 
 void followTheLine() {
-    int leftLightSensor = analogRead(sensor1);
-    int rightLightSensor = analogRead(sensor2);
+    int leftLightSensor = analogRead(ANALOG_SENSOR1);
+    int rightLightSensor = analogRead(ANALOG_SENSOR2);
 
     int lightDiff = abs(leftLightSensor - rightLightSensor);
     int isVeeringRight = rightLightSensor > leftLightSensor; // following the dark-side
