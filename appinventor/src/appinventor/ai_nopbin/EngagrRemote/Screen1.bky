@@ -1,0 +1,705 @@
+<xml>
+  <block type="component_event" x="466" y="-85">
+    <mutation component_type="ImageSprite" instance_name="upleft" event_name="TouchDown"></mutation>
+    <title name="COMPONENT_SELECTOR">upleft</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">Q</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" inline="false">
+                <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                <title name="COMPONENT_SELECTOR">TextToSpeech1</title>
+                <value name="ARG0">
+                  <block type="text">
+                    <title name="TEXT">Forward left</title>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="936" y="-104">
+    <mutation component_type="ImageSprite" instance_name="up" event_name="TouchDown"></mutation>
+    <title name="COMPONENT_SELECTOR">up</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">F</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" inline="false">
+                <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                <title name="COMPONENT_SELECTOR">TextToSpeech1</title>
+                <value name="ARG0">
+                  <block type="text">
+                    <title name="TEXT">Forward</title>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="-256" y="-36">
+    <mutation component_type="ListPicker" instance_name="ListPicker1" event_name="AfterPicking"></mutation>
+    <title name="COMPONENT_SELECTOR">ListPicker1</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="Connect" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="component_set_get">
+                <mutation component_type="ListPicker" set_or_get="get" property_name="Selection" is_generic="false" instance_name="ListPicker1"></mutation>
+                <title name="COMPONENT_SELECTOR">ListPicker1</title>
+                <title name="PROP">Selection</title>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+            <title name="COMPONENT_SELECTOR">TextToSpeech1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">Connected</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" inline="false">
+                <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+                <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+                <value name="ARG0">
+                  <block type="text">
+                    <title name="TEXT">G</title>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="component_set_get" inline="false">
+            <mutation component_type="ListPicker" set_or_get="set" property_name="Visible" is_generic="false" instance_name="ListPicker1"></mutation>
+            <title name="COMPONENT_SELECTOR">ListPicker1</title>
+            <title name="PROP">Visible</title>
+            <value name="VALUE">
+              <block type="logic_boolean">
+                <title name="BOOL">FALSE</title>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" inline="false">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="component_set_get">
+                    <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+                    <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+                    <title name="PROP">IsConnected</title>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="component_set_get" inline="false">
+                    <mutation component_type="Button" set_or_get="set" property_name="Image" is_generic="false" instance_name="connected"></mutation>
+                    <title name="COMPONENT_SELECTOR">connected</title>
+                    <title name="PROP">Image</title>
+                    <value name="VALUE">
+                      <block type="text">
+                        <title name="TEXT">green_dot.png</title>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="component_set_get" inline="false">
+                    <mutation component_type="Button" set_or_get="set" property_name="Image" is_generic="false" instance_name="connected"></mutation>
+                    <title name="COMPONENT_SELECTOR">connected</title>
+                    <title name="PROP">Image</title>
+                    <value name="VALUE">
+                      <block type="text">
+                        <title name="TEXT">red_dot.png</title>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="1409" y="-105">
+    <mutation component_type="ImageSprite" instance_name="upright" event_name="TouchDown"></mutation>
+    <title name="COMPONENT_SELECTOR">upright</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">E</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" inline="false">
+                <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                <title name="COMPONENT_SELECTOR">TextToSpeech1</title>
+                <value name="ARG0">
+                  <block type="text">
+                    <title name="TEXT">Forward right</title>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="462" y="133">
+    <mutation component_type="ImageSprite" instance_name="upleft" event_name="TouchUp"></mutation>
+    <title name="COMPONENT_SELECTOR">upleft</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">S</title>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="936" y="120">
+    <mutation component_type="ImageSprite" instance_name="up" event_name="TouchUp"></mutation>
+    <title name="COMPONENT_SELECTOR">up</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">S</title>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="1409" y="118">
+    <mutation component_type="ImageSprite" instance_name="upright" event_name="TouchUp"></mutation>
+    <title name="COMPONENT_SELECTOR">upright</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">S</title>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="-270" y="303">
+    <mutation component_type="Button" instance_name="connected" event_name="Click"></mutation>
+    <title name="COMPONENT_SELECTOR">connected</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_negate" inline="false">
+            <value name="BOOL">
+              <block type="component_set_get">
+                <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+                <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+                <title name="PROP">IsConnected</title>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_set_get" inline="false">
+            <mutation component_type="ListPicker" set_or_get="set" property_name="Elements" is_generic="false" instance_name="ListPicker1"></mutation>
+            <title name="COMPONENT_SELECTOR">ListPicker1</title>
+            <title name="PROP">Elements</title>
+            <value name="VALUE">
+              <block type="component_set_get">
+                <mutation component_type="BluetoothClient" set_or_get="get" property_name="AddressesAndNames" is_generic="false" instance_name="BluetoothClient1"></mutation>
+                <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+                <title name="PROP">AddressesAndNames</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" inline="false">
+                <mutation component_type="ListPicker" set_or_get="set" property_name="Visible" is_generic="false" instance_name="ListPicker1"></mutation>
+                <title name="COMPONENT_SELECTOR">ListPicker1</title>
+                <title name="PROP">Visible</title>
+                <value name="VALUE">
+                  <block type="logic_boolean">
+                    <title name="BOOL">TRUE</title>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_method">
+                    <mutation component_type="ListPicker" method_name="Open" is_generic="false" instance_name="ListPicker1"></mutation>
+                    <title name="COMPONENT_SELECTOR">ListPicker1</title>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">S</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" inline="false">
+                <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+                <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+                <value name="ARG0">
+                  <block type="text">
+                    <title name="TEXT">H</title>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_method">
+                    <mutation component_type="BluetoothClient" method_name="Disconnect" is_generic="false" instance_name="BluetoothClient1"></mutation>
+                    <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+                    <next>
+                      <block type="component_set_get" inline="false">
+                        <mutation component_type="Button" set_or_get="set" property_name="Image" is_generic="false" instance_name="connected"></mutation>
+                        <title name="COMPONENT_SELECTOR">connected</title>
+                        <title name="PROP">Image</title>
+                        <value name="VALUE">
+                          <block type="text">
+                            <title name="TEXT">red_dot.png</title>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="component_method" inline="false">
+                            <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                            <title name="COMPONENT_SELECTOR">TextToSpeech1</title>
+                            <value name="ARG0">
+                              <block type="text">
+                                <title name="TEXT">Disconnected</title>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="932" y="317">
+    <mutation component_type="ImageSprite" instance_name="stop" event_name="TouchDown"></mutation>
+    <title name="COMPONENT_SELECTOR">stop</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">S</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" inline="false">
+                <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                <title name="COMPONENT_SELECTOR">TextToSpeech1</title>
+                <value name="ARG0">
+                  <block type="text">
+                    <title name="TEXT">Stop</title>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="376" y="472">
+    <mutation component_type="Slider" instance_name="sensitivity" event_name="PositionChanged"></mutation>
+    <title name="COMPONENT_SELECTOR">sensitivity</title>
+    <statement name="DO">
+      <block type="component_set_get" inline="false">
+        <mutation component_type="AccelerometerSensor" set_or_get="set" property_name="Sensitivity" is_generic="false" instance_name="AccelerometerSensor1"></mutation>
+        <title name="COMPONENT_SELECTOR">AccelerometerSensor1</title>
+        <title name="PROP">Sensitivity</title>
+        <value name="VALUE">
+          <block type="component_set_get">
+            <mutation component_type="Slider" set_or_get="get" property_name="ThumbPosition" is_generic="false" instance_name="sensitivity"></mutation>
+            <title name="COMPONENT_SELECTOR">sensitivity</title>
+            <title name="PROP">ThumbPosition</title>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="464" y="598">
+    <mutation component_type="ImageSprite" instance_name="downleft" event_name="TouchDown"></mutation>
+    <title name="COMPONENT_SELECTOR">downleft</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">Z</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" inline="false">
+                <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                <title name="COMPONENT_SELECTOR">TextToSpeech1</title>
+                <value name="ARG0">
+                  <block type="text">
+                    <title name="TEXT">Back left</title>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="936" y="589">
+    <mutation component_type="ImageSprite" instance_name="down" event_name="TouchDown"></mutation>
+    <title name="COMPONENT_SELECTOR">down</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">B</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" inline="false">
+                <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                <title name="COMPONENT_SELECTOR">TextToSpeech1</title>
+                <value name="ARG0">
+                  <block type="text">
+                    <title name="TEXT">Reverse</title>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="1371" y="580">
+    <mutation component_type="ImageSprite" instance_name="downright" event_name="TouchDown"></mutation>
+    <title name="COMPONENT_SELECTOR">downright</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">C</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" inline="false">
+                <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                <title name="COMPONENT_SELECTOR">TextToSpeech1</title>
+                <value name="ARG0">
+                  <block type="text">
+                    <title name="TEXT">Back right</title>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="-153" y="759">
+    <mutation component_type="AccelerometerSensor" instance_name="AccelerometerSensor1" event_name="Shaking"></mutation>
+    <title name="COMPONENT_SELECTOR">AccelerometerSensor1</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">K</title>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" inline="false">
+                <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                <title name="COMPONENT_SELECTOR">TextToSpeech1</title>
+                <value name="ARG0">
+                  <block type="text">
+                    <title name="TEXT">Circles!</title>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="462" y="817">
+    <mutation component_type="ImageSprite" instance_name="downleft" event_name="TouchUp"></mutation>
+    <title name="COMPONENT_SELECTOR">downleft</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">S</title>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="936" y="799">
+    <mutation component_type="ImageSprite" instance_name="down" event_name="TouchUp"></mutation>
+    <title name="COMPONENT_SELECTOR">down</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">S</title>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="1369" y="793">
+    <mutation component_type="ImageSprite" instance_name="downright" event_name="TouchUp"></mutation>
+    <title name="COMPONENT_SELECTOR">downright</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="BluetoothClient" set_or_get="get" property_name="IsConnected" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <title name="PROP">IsConnected</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">S</title>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" x="-140" y="973">
+    <mutation component_type="CheckBox" instance_name="linefollowerswitch" event_name="Changed"></mutation>
+    <title name="COMPONENT_SELECTOR">linefollowerswitch</title>
+    <statement name="DO">
+      <block type="controls_if" inline="false">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="component_set_get">
+            <mutation component_type="CheckBox" set_or_get="get" property_name="Checked" is_generic="false" instance_name="linefollowerswitch"></mutation>
+            <title name="COMPONENT_SELECTOR">linefollowerswitch</title>
+            <title name="PROP">Checked</title>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">G</title>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="component_method" inline="false">
+            <mutation component_type="BluetoothClient" method_name="SendText" is_generic="false" instance_name="BluetoothClient1"></mutation>
+            <title name="COMPONENT_SELECTOR">BluetoothClient1</title>
+            <value name="ARG0">
+              <block type="text">
+                <title name="TEXT">G</title>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="85" language-version="17"></yacodeblocks>
+</xml>

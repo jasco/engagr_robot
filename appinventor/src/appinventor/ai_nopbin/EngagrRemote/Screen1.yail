@@ -1,0 +1,300 @@
+#|
+$Source $Yail
+|#
+
+(define-form appinventor.ai_nopbin.EngagrRemote.Screen1 Screen1)
+(require <com.google.youngandroid.runtime>)
+
+;;; Screen1
+
+(do-after-form-creation (set-and-coerce-property! 'Screen1 'AlignHorizontal 3 'number)
+ (set-and-coerce-property! 'Screen1 'Icon "logo-48.png" 'text)
+ (set-and-coerce-property! 'Screen1 'ScreenOrientation "portrait" 'text)
+ (set-and-coerce-property! 'Screen1 'Title "EngagrRemote" 'text)
+)
+
+;;; VerticalArrangement3
+
+(add-component Screen1 VerticalArrangement VerticalArrangement3 
+(set-and-coerce-property! 'VerticalArrangement3 'AlignVertical 2 'number)
+
+(set-and-coerce-property! 'VerticalArrangement3 'Height 80 'number)
+
+)
+
+;;; logo
+
+(add-component VerticalArrangement3 Image logo 
+(set-and-coerce-property! 'logo 'Picture "logo-48.png" 'text)
+
+)
+
+;;; HorizontalArrangement2
+
+(add-component Screen1 HorizontalArrangement HorizontalArrangement2 
+(set-and-coerce-property! 'HorizontalArrangement2 'Width -2 'number)
+
+)
+
+;;; VerticalArrangement1
+
+(add-component HorizontalArrangement2 VerticalArrangement VerticalArrangement1 
+(set-and-coerce-property! 'VerticalArrangement1 'AlignHorizontal 3 'number)
+
+(set-and-coerce-property! 'VerticalArrangement1 'Width -2 'number)
+
+)
+
+;;; byline
+
+(add-component VerticalArrangement1 Label byline 
+(set-and-coerce-property! 'byline 'FontBold #t 'boolean)
+
+(set-and-coerce-property! 'byline 'FontSize 28 'number)
+
+(set-and-coerce-property! 'byline 'FontTypeface 3 'number)
+
+(set-and-coerce-property! 'byline 'Text "Engagr Remote" 'text)
+
+)
+
+;;; VerticalArrangement2
+
+(add-component HorizontalArrangement2 VerticalArrangement VerticalArrangement2 
+)
+
+;;; connected
+
+(add-component VerticalArrangement2 Button connected 
+(set-and-coerce-property! 'connected 'Image "red_dot.png" 'text)
+
+(set-and-coerce-property! 'connected 'Width 40 'number)
+
+(set-and-coerce-property! 'connected 'Height 40 'number)
+
+)
+
+(define-event connected Click()(set-this-form)
+    (if (call-yail-primitive yail-not (*list-for-runtime* (get-property 'BluetoothClient1 'IsConnected)) '(boolean) "not") (begin   (set-and-coerce-property! 'ListPicker1 'Elements (get-property 'BluetoothClient1 'AddressesAndNames) 'list)(set-and-coerce-property! 'ListPicker1 'Visible #t 'boolean)(call-component-method 'ListPicker1 'Open (*list-for-runtime*) '())) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "S") '(text))(call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "H") '(text))(call-component-method 'BluetoothClient1 'Disconnect (*list-for-runtime*) '())(set-and-coerce-property! 'connected 'Image "red_dot.png" 'text)(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Disconnected") '(text)))))
+;;; Canvas1
+
+(add-component Screen1 Canvas Canvas1 
+(set-and-coerce-property! 'Canvas1 'BackgroundColor #xFF000000 'number)
+
+(set-and-coerce-property! 'Canvas1 'PaintColor #x00FFFFFF 'number)
+
+(set-and-coerce-property! 'Canvas1 'Width -2 'number)
+
+(set-and-coerce-property! 'Canvas1 'Height 200 'number)
+
+)
+
+;;; upleft
+
+(add-component Canvas1 ImageSprite upleft 
+(set-and-coerce-property! 'upleft 'Picture "up_left.png" 'text)
+
+(set-and-coerce-property! 'upleft 'X 80 'number)
+
+(set-and-coerce-property! 'upleft 'Y 35 'number)
+
+)
+
+(define-event upleft TouchDown($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "Q") '(text))(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Forward left") '(text)))))
+(define-event upleft TouchUp($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "S") '(text)))))
+;;; up
+
+(add-component Canvas1 ImageSprite up 
+(set-and-coerce-property! 'up 'Picture "up.png" 'text)
+
+(set-and-coerce-property! 'up 'X 140 'number)
+
+(set-and-coerce-property! 'up 'Y 15 'number)
+
+)
+
+(define-event up TouchDown($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "F") '(text))(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Forward") '(text)))))
+(define-event up TouchUp($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "S") '(text)))))
+;;; upright
+
+(add-component Canvas1 ImageSprite upright 
+(set-and-coerce-property! 'upright 'Picture "up_right.png" 'text)
+
+(set-and-coerce-property! 'upright 'X 200 'number)
+
+(set-and-coerce-property! 'upright 'Y 35 'number)
+
+)
+
+(define-event upright TouchDown($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "E") '(text))(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Forward right") '(text)))))
+(define-event upright TouchUp($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "S") '(text)))))
+;;; down
+
+(add-component Canvas1 ImageSprite down 
+(set-and-coerce-property! 'down 'Picture "down.png" 'text)
+
+(set-and-coerce-property! 'down 'X 140 'number)
+
+(set-and-coerce-property! 'down 'Y 140 'number)
+
+(set-and-coerce-property! 'down 'Width 50 'number)
+
+(set-and-coerce-property! 'down 'Height 50 'number)
+
+)
+
+(define-event down TouchDown($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "B") '(text))(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Reverse") '(text)))))
+(define-event down TouchUp($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "S") '(text)))))
+;;; downright
+
+(add-component Canvas1 ImageSprite downright 
+(set-and-coerce-property! 'downright 'Picture "down_right.png" 'text)
+
+(set-and-coerce-property! 'downright 'X 200 'number)
+
+(set-and-coerce-property! 'downright 'Y 120 'number)
+
+)
+
+(define-event downright TouchDown($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "C") '(text))(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Back right") '(text)))))
+(define-event downright TouchUp($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "S") '(text)))))
+;;; downleft
+
+(add-component Canvas1 ImageSprite downleft 
+(set-and-coerce-property! 'downleft 'Picture "down_left.png" 'text)
+
+(set-and-coerce-property! 'downleft 'X 80 'number)
+
+(set-and-coerce-property! 'downleft 'Y 120 'number)
+
+)
+
+(define-event downleft TouchDown($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "Z") '(text))(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Back left") '(text)))))
+(define-event downleft TouchUp($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "S") '(text)))))
+;;; stop
+
+(add-component Canvas1 ImageSprite stop 
+(set-and-coerce-property! 'stop 'Picture "stop.png" 'text)
+
+(set-and-coerce-property! 'stop 'X 140 'number)
+
+(set-and-coerce-property! 'stop 'Y 80 'number)
+
+)
+
+(define-event stop TouchDown($x $y)(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "S") '(text))(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Stop") '(text)))))
+;;; VerticalArrangement4
+
+(add-component Screen1 VerticalArrangement VerticalArrangement4 
+(set-and-coerce-property! 'VerticalArrangement4 'AlignHorizontal 3 'number)
+
+(set-and-coerce-property! 'VerticalArrangement4 'Width -2 'number)
+
+)
+
+;;; Label1
+
+(add-component VerticalArrangement4 Label Label1 
+(set-and-coerce-property! 'Label1 'FontSize 20 'number)
+
+(set-and-coerce-property! 'Label1 'Text "Options" 'text)
+
+)
+
+;;; linefollowerswitch
+
+(add-component VerticalArrangement4 CheckBox linefollowerswitch 
+(set-and-coerce-property! 'linefollowerswitch 'FontSize 16 'number)
+
+(set-and-coerce-property! 'linefollowerswitch 'Text "Line Follower" 'text)
+
+)
+
+(define-event linefollowerswitch Changed()(set-this-form)
+    (if (get-property 'linefollowerswitch 'Checked) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "G") '(text))) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "G") '(text)))))
+;;; HorizontalArrangement1
+
+(add-component Screen1 HorizontalArrangement HorizontalArrangement1 
+(set-and-coerce-property! 'HorizontalArrangement1 'AlignVertical 3 'number)
+
+(set-and-coerce-property! 'HorizontalArrangement1 'Visible #f 'boolean)
+
+(set-and-coerce-property! 'HorizontalArrangement1 'Height -2 'number)
+
+)
+
+;;; Label2
+
+(add-component HorizontalArrangement1 Label Label2 
+(set-and-coerce-property! 'Label2 'FontSize 16 'number)
+
+(set-and-coerce-property! 'Label2 'Text "Shake Sensitivity" 'text)
+
+)
+
+;;; sensitivity
+
+(add-component HorizontalArrangement1 Slider sensitivity 
+(set-and-coerce-property! 'sensitivity 'MaxValue 3 'number)
+
+(set-and-coerce-property! 'sensitivity 'MinValue 1 'number)
+
+(set-and-coerce-property! 'sensitivity 'ThumbPosition 0 'number)
+
+(set-and-coerce-property! 'sensitivity 'Width 150 'number)
+
+)
+
+(define-event sensitivity PositionChanged($thumbPosition)(set-this-form)
+    (set-and-coerce-property! 'AccelerometerSensor1 'Sensitivity (get-property 'sensitivity 'ThumbPosition) 'number))
+;;; ListPicker1
+
+(add-component Screen1 ListPicker ListPicker1 
+(set-and-coerce-property! 'ListPicker1 'Text "Bluetooth Clients" 'text)
+
+(set-and-coerce-property! 'ListPicker1 'Visible #f 'boolean)
+
+)
+
+(define-event ListPicker1 AfterPicking()(set-this-form)
+    (if (call-component-method 'BluetoothClient1 'Connect (*list-for-runtime* (get-property 'ListPicker1 'Selection)) '(text)) (begin   (call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Connected") '(text))(call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "G") '(text))))(set-and-coerce-property! 'ListPicker1 'Visible #f 'boolean)(if (get-property 'BluetoothClient1 'IsConnected) (begin   (set-and-coerce-property! 'connected 'Image "green_dot.png" 'text)) (begin   (set-and-coerce-property! 'connected 'Image "red_dot.png" 'text))))
+;;; Notifier1
+
+(add-component Screen1 Notifier Notifier1 
+)
+
+;;; BluetoothClient1
+
+(add-component Screen1 BluetoothClient BluetoothClient1 
+)
+
+;;; TextToSpeech1
+
+(add-component Screen1 TextToSpeech TextToSpeech1 
+(set-and-coerce-property! 'TextToSpeech1 'Country "us" 'text)
+
+(set-and-coerce-property! 'TextToSpeech1 'Language "en" 'text)
+
+)
+
+;;; AccelerometerSensor1
+
+(add-component Screen1 AccelerometerSensor AccelerometerSensor1 
+)
+
+(define-event AccelerometerSensor1 Shaking()(set-this-form)
+    (if (get-property 'BluetoothClient1 'IsConnected) (begin   (call-component-method 'BluetoothClient1 'SendText (*list-for-runtime* "K") '(text))(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Circles!") '(text)))))
+(init-runtime)
