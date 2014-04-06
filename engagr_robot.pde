@@ -17,6 +17,7 @@
 #define CMD_REV_RIGHT 'C'
 #define CMD_MANUAL    'G'
 #define CMD_AUTO      'H'
+#define CMD_CRAZY     'K'
 
 // Velocity, scale 0-255
 #define FULL_FWD      150
@@ -24,11 +25,14 @@
 
 int sensitivity = 18;
 int velocity = 150;
-int lineFollowingMode = 1;
+int lineFollowingMode = 0;
+HardwareSerial serial = HardwareSerial();
 
 void setup()
 {
-    Serial.begin(1152000);
+    serial.begin(115200);
+    pinMode(13,OUTPUT);
+    digitalWrite(11,HIGH);
 
     pinMode(MOTOR_LEFT,OUTPUT);
     pinMode(MOTOR_RIGHT,OUTPUT);
@@ -39,8 +43,8 @@ void setup()
 void loop() {
     // Process serial input if any
     char input = 0;
-    if (Serial.available() > 0) {
-        input = Serial.read();
+    if (serial.available() > 0) {
+        input = serial.read();
         processSerialModeCommand(input);
     }
 
@@ -71,14 +75,22 @@ void processSerialDriveCommand(const char input) {
             break;
 
         case CMD_REVERSE:
+            drive(HALF_FWD, HALF_FWD);
             break;
         case CMD_REV_LEFT:
+            drive(0, HALF_FWD);
             break;
         case CMD_REV_RIGHT:
+            drive(HALF_FWD, 0);
             break;
 
         case CMD_CRAZY:
-            drive(HALF_FWD, 0);
+            drive(FULL_FWD, 0);
+            delay(1000);
+            drive(FULL_FWD, FULL_FWD);
+            delay(1000);
+            drive(0, FULL_FWD);
+            delay(1000);
             break;
     }
 }
