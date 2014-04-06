@@ -1,3 +1,5 @@
+// TinsyDuino
+
 #define sensor1 A0
 #define sensor2 A1
 #define MOTOR_LEFT  4
