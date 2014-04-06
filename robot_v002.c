@@ -83,7 +83,7 @@ void processSerialDriveCommand(const char input) {
     }
 }
 
-void processSerialModeCommand(char input) {
+void processSerialModeCommand(const char input) {
     switch (input) {
          case CMD_MANUAL:
             stop();
@@ -123,11 +123,11 @@ void stop() {
 }
 
 void followTheLine() {
-    int leftLightSensor = analogRead(ANALOG_SENSOR1);
-    int rightLightSensor = analogRead(ANALOG_SENSOR2);
+    const int leftLightSensor = analogRead(ANALOG_SENSOR1);
+    const int rightLightSensor = analogRead(ANALOG_SENSOR2);
 
-    int lightDiff = abs(leftLightSensor - rightLightSensor);
-    int isVeeringRight = rightLightSensor > leftLightSensor; // following the dark-side
+    const int lightDiff = abs(leftLightSensor - rightLightSensor);
+    const int isVeeringRight = rightLightSensor > leftLightSensor; // following the dark-side
   
     Serial.print(leftLightSensor);
     Serial.print("\t");
