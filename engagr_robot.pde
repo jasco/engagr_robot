@@ -1,4 +1,4 @@
-// TinsyDuino
+// Teensy Arduino
 
 #define ANALOG_SENSOR1 A0
 #define ANALOG_SENSOR2 A1
@@ -20,8 +20,9 @@
 #define CMD_CRAZY     'K'
 
 // Velocity, scale 0-255
-#define FULL_FWD      150
-#define HALF_FWD      75
+// The PWM threshold required to drive the motor may vary depending on the hardware
+#define FULL_FWD      200
+#define HALF_FWD      150
 
 int sensitivity = 18;
 int velocity = 150;
@@ -110,23 +111,21 @@ void processSerialModeCommand(const char input) {
 }
 
 void drive(int leftVelocity, int rightVelocity) {
+    setPWM(MOTOR_LEFT, leftVelocity);
+    setPWM(MOTOR_RIGHT, rightVelocity);
+    delay(20);
+}
+
+void setPWM(int pwmPin, int value) {
     // There is a errata issued where PWM output may have higher than expected duty-cycle at levels 0-10.
     // Particularly noteworthy, analog 0 may not fully turn off.
     // Reference http://arduino.cc/en/Reference/analogWrite
 
-    if (leftVelocity != 0) {
-        analogWrite(MOTOR_LEFT, leftVelocity);
+    if (value != 0) {
+        analogWrite(pwmPin, value);
     } else {
-        digitalWrite(MOTOR_LEFT, 0);  // digital to ensure off
+        digitalWrite(pwmPin, 0);  // digital to ensure off
     }
-
-    if (rightVelocity != 0) {
-        analogWrite(MOTOR_RIGHT, rightVelocity);
-    } else {
-        digitalWrite(MOTOR_RIGHT, 0);  // digital to ensure off
-    }
-
-    delay(20);
 }
 
 void stop() {
